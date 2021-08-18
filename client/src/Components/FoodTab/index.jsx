@@ -1,28 +1,61 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 import { RiShoppingBag3Line } from "react-icons/ri";
 import { IoFastFoodOutline, IoNutritionOutline } from "react-icons/io5";
 import { BiDrink } from "react-icons/bi";
 
 const MobileTabs = () => {
+  const [allTypes, setAllTypes] = useState([
+    {
+      id: "delivery",
+      icon: <RiShoppingBag3Line />,
+      name: "Delivery",
+      isActive: false,
+    },
+    {
+      id: `dining`,
+      icon: <IoFastFoodOutline />,
+      name: "Dining Out",
+      isActive: false,
+    },
+    {
+      id: `night`,
+      icon: <BiDrink />,
+      name: "Night life",
+      isActive: false,
+    },
+    {
+      id: `nutri`,
+      icon: <IoNutritionOutline />,
+      name: "Nutrition",
+      isActive: false,
+    },
+  ]);
+  const { type } = useParams();
+
   return (
     <>
       <div className="lg:hidden bg-white shadow-lg p-3 fixed bottom-0 z-10 w-full flex items-center justify-between md:justify-evenly text-gray-500 border">
-        <div className="flex flex-col items-center text-xl">
-          <RiShoppingBag3Line />
-          <h5 className="text-sm">Delivery</h5>
-        </div>
-        <div className="flex flex-col items-center text-xl">
-          <IoFastFoodOutline />
-          <h5 className="text-sm">Dining Out</h5>
-        </div>
-        <div className="flex flex-col items-center text-xl">
-          <BiDrink />
-          <h5 className="text-sm">Night life</h5>
-        </div>
-        <div className="flex flex-col items-center text-xl">
-          <IoNutritionOutline />
-          <h5 className="text-sm">Nutrition</h5>
-        </div>
+        {allTypes.map((items) => (
+          <Link to={`/${items.id}`}>
+            <div
+              className={
+                type === items.id
+                  ? "flex flex-col relative items-center text-xl text-zomato-400 "
+                  : "flex flex-col items-center text-xl "
+              }
+            >
+              <div
+                className={
+                  type === items.id &&
+                  "absolute -top-3 w-full h-2 border-t-2 border-zomato-400"
+                }
+              />
+              {items.icon}
+              <h5 className="text-sm">{items.name}</h5>
+            </div>
+          </Link>
+        ))}
       </div>
     </>
   );

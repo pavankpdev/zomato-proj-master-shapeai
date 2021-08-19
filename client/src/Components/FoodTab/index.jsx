@@ -57,6 +57,7 @@ const MobileTabs = () => {
     </>
   );
 };
+
 const LargeTabs = () => {
   const [allTypes, setAllTypes] = useState([
     {

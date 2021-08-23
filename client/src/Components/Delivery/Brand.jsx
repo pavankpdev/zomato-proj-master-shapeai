@@ -15,44 +15,24 @@ const Brand = (props) => {
     "https://b.zmtcdn.com/data/brand_creatives/logos/80c09d718acddee05a655eb378bb442f_1617875125.png?output-format=webp",
   ];
   const settings = {
-    
-    infinite: false,
+    arrows: true,
+    infinite: true,
     speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 4,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 3,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
   return (
     <div className="my-5 mb-32">
       <Slider {...settings}>
         {logos.map((logo) => (
-          <div className="w-24 h-24 mx-3 bg-white shadow">
-            <img src={logo} alt="brand" className="w-full h-full object-cover" />
+          <div className="w-32 h-48 mx-10 bg-white shadow">
+            <img
+              src={logo}
+              alt="brand"
+              className="w-full h-full object-cover"
+            />
           </div>
         ))}
       </Slider>

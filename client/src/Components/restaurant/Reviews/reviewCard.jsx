@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { TiStarFullOutline } from "react-icons/ti";
+import { useDispatch } from "react-redux";
+import dayjs from "dayjs";
+import { getUser } from "../../../Redux/Reducer/User/user.action";
 
-const ReviewCard = () => {
+const ReviewCard = (props) => {
+  const [user, setUser] = useState({});
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUser(props.user)).then((data) =>
+      // setUser(data.payload.user.user.user)
+      console.log(data)
+    );
+  }, []);
+
   return (
     <>
       <div className="my-3 flex flex-col gap-3">
@@ -15,7 +28,7 @@ const ReviewCard = () => {
               />
             </div>
             <div className="flex flex-col">
-              <h3 className="text-lg font-semibold">Pavan Kumar</h3>
+              <h3 className="text-lg font-semibold">{user?.fullname}</h3>
               <small className="text-gray-500">
                 5 Reviews &#8226; 3 Followers
               </small>
@@ -30,22 +43,16 @@ const ReviewCard = () => {
             <span className="text-white text-xs bg-green-700 px-2 py-1 rounded-lg flex items-center gap-1">
               3 <TiStarFullOutline />
             </span>
-            <h5 className="font-regular uppercase">Delivery</h5>
-            <small className="text-gray-500">3 days ago</small>
+            <h5 className="font-regular uppercase">
+              {props.isRestaurantReview ? "Dining" : "Delivery"}
+            </h5>
+            <small className="text-gray-500">
+              {dayjs(props.createdAt).format("DD MMM YYYY")}
+            </small>
           </div>
           <div className="w-full">
             <p className="w-full text-gray-600 font-light text-base">
-              chicken Biryani and Paneer Biryani...yeah yeah Paneer pulaw ..both
-              were quite good, it was good blend of all the spices or you can
-              say it was bit spicy than usual. Also those spices are making this
-              Biryani more irresistible. on the other side Masala chicken was
-              nightmare, taste was bad, chicken was not fresh and also not
-              properly cooked, furthermore the portion for masala chicken was
-              very less ,just two pieces, in a other way it was good also
-              because the taste was so bad you couldn't have more than one piece
-              also🤣. so from my side Biryani was 4+* both in term of quantity
-              and quality. Masala Chicken was 2*, bad quality and less quantity.
-              Overall packing and Delivery 4+*
+              {props.reviewText}
             </p>
           </div>
         </div>

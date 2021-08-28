@@ -1,11 +1,32 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import { useDispatch } from "react-redux";
+
+import { signIn } from "../../Redux/Reducer/Auth/Auth.action";
 
 export default function SignIn({ isOpen, setIsOpen }) {
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const dispatch = useDispatch();
+
+  const handleChange = (e) =>
+    setUserData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
   function closeModal() {
     setIsOpen(false);
   }
+
+  const submit = () => {
+    setUserData({
+      email: "",
+      password: "",
+    });
+    dispatch(signIn(userData));
+  };
 
   return (
     <>
@@ -60,6 +81,9 @@ export default function SignIn({ isOpen, setIsOpen }) {
                       <input
                         type="text"
                         id="email"
+                        name="email"
+                        onChange={handleChange}
+                        value={userData.email}
                         placeholder="email@email.com"
                         className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400"
                       />
@@ -70,10 +94,16 @@ export default function SignIn({ isOpen, setIsOpen }) {
                         type="password"
                         id="password"
                         placeholder="*********"
+                        value={userData.password}
+                        name="password"
+                        onChange={handleChange}
                         className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400"
                       />
                     </div>
-                    <div className="w-full  text-center bg-zomato-400 text-white py-2 rounded-lg">
+                    <div
+                      onClick={submit}
+                      className="w-full  text-center bg-zomato-400 text-white py-2 rounded-lg"
+                    >
                       Sign in
                     </div>
                   </form>

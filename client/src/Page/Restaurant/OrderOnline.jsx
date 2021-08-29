@@ -10,6 +10,7 @@ import FoodList from "../../Components/restaurant/Order-Online/FoodList";
 
 // redux actions
 import { getFoodList } from "../../Redux/Reducer/Food/Food.action";
+import { addCart } from "../../Redux/Reducer/Cart/Cart.action";
 
 const OrderOnline = () => {
   const [menu, setMenu] = useState([]);
@@ -33,6 +34,8 @@ const OrderOnline = () => {
         setMenu(data.payload.menus.menus)
       );
   }, [reduxState]);
+
+  
 
   return (
     <>

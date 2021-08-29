@@ -4,7 +4,7 @@ import ReactStars from "react-rating-stars-component";
 import { AiOutlinePlus } from "react-icons/ai";
 import { getFood } from "../../../Redux/Reducer/Food/Food.action";
 import { getImage } from "../../../Redux/Reducer/Image/Image.action";
-
+import { addCart } from "../../../Redux/Reducer/Cart/Cart.action";
 const FoodItem = (props) => {
   const [food, setFood] = useState({});
 
@@ -20,6 +20,11 @@ const FoodItem = (props) => {
       });
     });
   }, []);
+
+  const addFoodToCart = () => {
+    dispatch(addCart({ ...food, quantity: 1, totalPrice: food.price }));
+    setFood((prev) => ({ ...prev, isAddedToCart: true }));
+  };
 
   return (
     <>
@@ -37,8 +42,18 @@ const FoodItem = (props) => {
           <div className="w-3/4 md:w-7/12 flex flex-col gap-1">
             <div className="flex items-center justify-between">
               <h3 className="text-xl font-semibold">{food?.name}</h3>
-              <button className=" md:hidden flex items-center gap-2 text-zomato-400 bg-zomato-50 border border-zomato-400 px-2 py-1 rounded-lg">
-                <AiOutlinePlus /> Add
+              <button
+                onClick={addFoodToCart}
+                disabled={food.isAddedToCart}
+                className=" md:hidden flex items-center gap-2 text-zomato-400 bg-zomato-50 border border-zomato-400 px-2 py-1 rounded-lg"
+              >
+                {food.isAddedToCart ? (
+                  "Added"
+                ) : (
+                  <>
+                    <AiOutlinePlus /> Add
+                  </>
+                )}
               </button>
             </div>
             <ReactStars count={5} value={food?.rating || 0} />
@@ -46,8 +61,18 @@ const FoodItem = (props) => {
             <p className="truncate">{food?.descript}</p>
           </div>
           <div className="hidden md:block w-2/12	">
-            <button className=" flex items-center gap-2 text-zomato-400 bg-zomato-50 border border-zomato-400 px-4 py-2 rounded-lg">
-              <AiOutlinePlus /> Add
+            <button
+              onClick={addFoodToCart}
+              disabled={food.isAddedToCart}
+              className=" flex items-center gap-2 text-zomato-400 bg-zomato-50 border border-zomato-400 px-4 py-2 rounded-lg"
+            >
+              {food.isAddedToCart ? (
+                "Added"
+              ) : (
+                <>
+                  <AiOutlinePlus /> Add
+                </>
+              )}
             </button>
           </div>
         </div>

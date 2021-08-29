@@ -44,6 +44,7 @@ export const addCart = (newFood) => async (dispatch) => {
 };
 
 export const DeleteCart = (foodID) => async (dispatch) => {
+  console.log({ foodID });
   try {
     let cartData = { cart: [] };
 

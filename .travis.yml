@@ -1,0 +1,23 @@
+sudo: required
+
+# Install Docker
+services:
+  - docker
+
+# Execute logic
+script:
+  - echo "Hello Students!"
+
+after_success:
+  # Build all the docker files
+  - docker build -t pavanleton/zomato-shapeai-client ./client
+  - docker build -t pavanleton/zomato-shapeai-server ./server
+  - docker build -t pavanleton/zomato-shapeai-nginx ./nginx
+
+  # log in docker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  # push to docker hub
+  - docker push pavanleton/zomato-shapeai-client
+  - docker push pavanleton/zomato-shapeai-server
+  - docker push pavanleton/zomato-shapeai-nginx

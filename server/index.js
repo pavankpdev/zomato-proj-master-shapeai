@@ -18,7 +18,7 @@ import Food from "./API/Food";
 import Image from "./API/Image";
 import Order from "./API/orders";
 import Reviews from "./API/reviews";
-import User from "./API/user";
+import User from "./API/User";
 import Menu from "./API/menu";
 import MailService from "./API/Mail";
 import Payments from "./API/Payments";

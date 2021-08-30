@@ -54,7 +54,9 @@ zomato.use("/payments", Payments);
 
 zomato.get("/", (req, res) => res.json({ message: "Setup success" }));
 
-zomato.listen(4000, () =>
+const port = process.env.PORT || 4000;
+
+zomato.listen(port, () =>
   ConnectDB()
     .then(() => console.log("Server is running 🚀"))
     .catch(() =>

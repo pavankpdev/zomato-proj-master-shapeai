@@ -15,5 +15,7 @@ ENV MAILGUN__DOMAIN=sandbox2e5aaad8685c4527b9bbeee1eaed6ba4.mailgun.org
 ENV MAILGUN__API__KEY=3d2c87739cfa7b9b0db054cdf6d60ea7-9776af14-eafee2c6
 ENV RZR_PAY_ID=rzp_test_RNvW44vJHiXg1b
 ENV RZR_PAY_SECRET=MHdAwlbdqlCJlFW4kKrbk4kT
+ENV NODE_ENV=production
+ENV PORT=4000
 
 CMD ["npm", "run", "start"]

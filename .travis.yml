@@ -26,10 +26,10 @@ deploy:
   # deploy to AWS EBS
   provider: elasticbeanstalk
   region: ap-south-1
-  app: Zomato-clone-shapeai
-  env: Zomatocloneshapeai-env
+  app: Zomato-clone-shapeai-2
+  env: Zomatocloneshapeai2-env
   bucket_name: elasticbeanstalk-ap-south-1-701994403871
-  bucket_path: zomatoshapeai
+  bucket_path: zomatoshapeai2
   on:
     branch: master
   access_key_id: $AWS_KEY

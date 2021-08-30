@@ -28,6 +28,8 @@ import ConnectDB from "./database/connection";
 
 const zomato = express();
 
+console.log(process.env);
+
 // application middlewares
 zomato.use(express.json());
 zomato.use(express.urlencoded({ extended: false }));

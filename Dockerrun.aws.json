@@ -6,14 +6,14 @@
       "image": "pavanleton/zomato-shapeai-client",
       "hostname": "client",
       "essentials": false,
-      "memory": 480
+      "memory": 128
     },
     {
       "name": "nodeserver",
       "image": "pavanleton/zomato-shapeai-server",
       "hostname": "nodeserver",
       "essentials": false,
-      "memory": 480
+      "memory": 128
     },
     {
       "name": "nginx",

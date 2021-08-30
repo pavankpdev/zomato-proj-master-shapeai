@@ -1,12 +1,10 @@
 FROM node:alpine
 
 WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm i
-
+COPY ./package.json ./
+RUN npm install
 COPY . .
+
 
 ENV MONGO_URL=mongodb+srv://pavan:pavan@shapeai.ujqaw.mongodb.net/zomato?retryWrites=true&w=majority
 ENV GOOGLE_CLIENT_ID=448325328376-0noqmrddvmqm9lp1jin5c42jjna76ldc.apps.googleusercontent.com

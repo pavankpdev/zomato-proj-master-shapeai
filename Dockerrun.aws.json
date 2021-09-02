@@ -2,20 +2,6 @@
   "AWSEBDockerrunVersion": 2,
   "containerDefinitions": [
     {
-      "name": "client",
-      "image": "pavanleton/zomato-shapeai-client",
-      "hostname": "client",
-      "essentials": false,
-      "memory": 128
-    },
-    {
-      "name": "nodeserver",
-      "image": "pavanleton/zomato-shapeai-server",
-      "hostname": "nodeserver",
-      "essentials": false,
-      "memory": 128
-    },
-    {
       "name": "nginx",
       "image": "pavanleton/zomato-shapeai-nginx",
       "hostname": "nginx",
@@ -23,6 +9,20 @@
       "postMappings": [{ "hostPort": 80, "containerPort": 80 }],
       "links": ["client", "nodeserver"],
       "memory": 128
+    },
+    {
+      "name": "client",
+      "image": "pavanleton/zomato-shapeai-client",
+      "hostname": "client",
+      "essentials": false,
+      "memory": 300
+    },
+    {
+      "name": "nodeserver",
+      "image": "pavanleton/zomato-shapeai-server",
+      "hostname": "nodeserver",
+      "essentials": false,
+      "memory": 300
     }
   ]
 }

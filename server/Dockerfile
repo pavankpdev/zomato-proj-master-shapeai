@@ -18,4 +18,7 @@ ENV RZR_PAY_SECRET=MHdAwlbdqlCJlFW4kKrbk4kT
 ENV NODE_ENV=production
 ENV PORT=4000
 
+RUN npm run build
+
+
 CMD ["npm", "run", "start"]

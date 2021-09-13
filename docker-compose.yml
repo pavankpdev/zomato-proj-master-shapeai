@@ -14,7 +14,7 @@ services:
     restart: always
     build:
       dockerfile: Dockerfile.dev
-      context: ./server/
+      context: ./server
     volumes:
       - /app/node_modules
       - ./server:/app
@@ -28,9 +28,10 @@ services:
       - MAILGUN__API__KEY=3d2c87739cfa7b9b0db054cdf6d60ea7-9776af14-eafee2c6
       - RZR_PAY_ID=rzp_test_RNvW44vJHiXg1b
       - RZR_PAY_SECRET=MHdAwlbdqlCJlFW4kKrbk4kT
+      - NODE_ENV=production
+      - PORT=4000
     ports:
       - "4000:4000"
-
   client:
     build:
       dockerfile: Dockerfile

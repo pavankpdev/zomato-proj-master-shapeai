@@ -6,4 +6,6 @@ script:
 
 after_success:
   - ssh -i SHapeAI_test.cer $EC2_INSTANCE
+  - echo "y" --stdin
+  - echo "y" --stdin
   - echo "hello"

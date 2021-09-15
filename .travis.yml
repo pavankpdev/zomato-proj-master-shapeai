@@ -3,9 +3,6 @@ services:
   - docker
 script:
   - echo "Hello Students!"
-before_install:
-  - openssl aes-256-cbc -K $encrypted_0a6446eb3ae3_key -iv $encrypted_0a6446eb3ae3_iv
-    -in SHapeAI_test.cer.enc -out SHapeAI_test.cer -d
 
 after_success:
   - ssh -i SHapeAI_test.cer $EC2_INSTANCE

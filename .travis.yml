@@ -13,6 +13,6 @@ before_install:
 deploy:
   provider: script
   skip_cleanup: true
-  script: ssh ec2-user@<your-ec2-instance> 'bash ./deploy.sh'
+  script: ssh $EC2_INSTANCE 'bash ./deploy.sh'
   on:
     branch: master

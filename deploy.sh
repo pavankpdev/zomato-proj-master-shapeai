@@ -1,3 +1,5 @@
+echo "yes"
+
 echo "Changing directory to ~/cupbot"
 cd app/zomato-proj-master-shapeai
 echo "Pulling from git"

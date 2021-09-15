@@ -7,7 +7,7 @@ before_install:
   - mkdir -p ~/.ssh
   - echo -e "$PROD_SSH_KEY" > ~/.ssh/id_rsa
   - chmod 600 ~/.ssh/id_rsa
-  - [[ -f /.dockerenv ]] && echo -e "HOST *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  - echo -e "HOST *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
 
 
 deploy:

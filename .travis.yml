@@ -13,6 +13,6 @@ before_install:
 deploy:
   provider: script
   skip_cleanup: true
-  script: ssh $EC2_INSTANCE 'bash ./deploy.sh' | echo "yes"
+  script: ssh $EC2_INSTANCE 'bash ./deploy.sh' -y
   on:
     branch: master

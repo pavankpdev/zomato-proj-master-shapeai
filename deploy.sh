@@ -1,6 +1,1 @@
-echo "Changing directory to ~/cupbot"
-cd app/zomato-proj-master-shapeai
-echo "Pulling from git"
-git pull origin master
-echo "Yarn'ing"
-docker-compose up --build
+ssh "ubuntu@65.1.144.62" "cd app/zomato-proj-master-shapeai && git pull origin master && docker-compose up --build"

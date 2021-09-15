@@ -3,6 +3,16 @@ services:
   - docker
 script:
   - echo "Hello Students!"
+before_install:
+  - openssl aes-256-cbc -K $encrypted_db2095f63ba3_key -iv $encrypted_db2095f63ba3_iv
+    -in deploy_rsa.enc -out deploy_rsa -d
+  - eval "$(ssh-agent -s)"
+  - chmod 600 /tmp/deploy_rsa
+  - ssh-add /tmp/deploy_rsa
 
-after_success:
-  - yes | ssh -i -T SHapeAI_test.cer $EC2_INSTANCE
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: ssh ec2-user@<your-ec2-instance> 'bash ./deploy.sh'
+  on:
+    branch: master

@@ -5,7 +5,4 @@ script:
   - echo "Hello Students!"
 
 after_success:
-  - ssh -i SHapeAI_test.cer $EC2_INSTANCE
-  - echo "y" --stdin
-  - echo "y" --stdin
-  - echo "hello"
+  - ssh -i SHapeAI_test.cer $EC2_INSTANCE | yes
